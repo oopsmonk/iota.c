@@ -6,35 +6,30 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/oopsmonk/iota.c.git",
-        "branch": "pio_mbed"
+        "branch": "pio_esp32"
     },
     "authors": {
         "name": "Sam Chen",
         "email": "sam.chen@iota.org",
         "maintainer": true
     },
-    "frameworks": "mbed",
-    "platforms": "*",
+    "frameworks": "*",
+    "platforms": "espressif32",
     "build":{
         "srcFilter":[
-            "+<cclient/request/*.[ch]>",
-            "+<cclient/response/*.[ch]>",
-            "+<cclient/serialization/*.[ch]>",
-            "-<cclient/serialization/json/tests/*>"
+            "+<cclient/service.c>",
+            "+<cclient/api/core/*.c>",
+            "+<cclient/api/extended/*.c>",
+            "+<cclient/http/*.c>",
+            "+<cclient/request/*.c>",
+            "+<cclient/response/*.c>",
+            "+<cclient/serialization/json/*.c>"
         ]
     },
     "dependencies": [
         {
             "name": "iota_common",
             "version": "https://github.com/oopsmonk/iota_common.git#pio_lib"
-        },
-        {
-            "name": "http_parser",
-            "version": "https://github.com/nodejs/http-parser.git#v2.9.2"
-        },
-        {
-            "name": "cJSON",
-            "version": "https://github.com/DaveGamble/cJSON.git#v1.7.12"
         }
     ]
 }
