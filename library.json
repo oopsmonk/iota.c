@@ -1,6 +1,6 @@
 {
     "name": "iota_client",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": "crypto, iota, client",
     "description": "IOTA C client library",
     "repository": {
