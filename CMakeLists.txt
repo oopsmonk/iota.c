@@ -26,6 +26,14 @@ include(cmake/uthash.cmake)
 include(cmake/sodium.cmake)
 include(cmake/base58.cmake)
 
+if (${CMAKE_C_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_C_COMPILER_ID} MATCHES "GNU")
+  # using Clang or GCC
+  set(IOTA_DEBUG_OPTIONS -Wall -Werror -Wextra -Wno-unused-function -Wno-unused-parameter)
+elseif (${CMAKE_C_COMPILER_ID} MATCHES "MSVC")
+  # using Visual Studio C++
+  message(FATAL_ERROR "MSVS is not supported at this moment")
+endif()
+
 if(ENABLED_JEMALLOC)
   include(cmake/jemalloc.cmake)
 endif()

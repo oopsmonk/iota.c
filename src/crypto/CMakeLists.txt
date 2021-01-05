@@ -15,6 +15,7 @@ target_sources(
 target_include_directories(iota_crypto PUBLIC "${PROJECT_SOURCE_DIR}/src" "${CMAKE_INSTALL_PREFIX}/include")
 
 add_dependencies(iota_crypto sodium)
+target_compile_options(iota_crypto PRIVATE "$<$<CONFIG:DEBUG>:${IOTA_DEBUG_OPTIONS}>")
 
 target_link_libraries(iota_crypto INTERFACE sodium)
 

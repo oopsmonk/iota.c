@@ -48,6 +48,7 @@ target_include_directories(
 )
 
 add_dependencies(iota_client iota_core ext_cjson)
+target_compile_options(iota_client PRIVATE "$<$<CONFIG:DEBUG>:${IOTA_DEBUG_OPTIONS}>")
 
 target_link_libraries(
   iota_client

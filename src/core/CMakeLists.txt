@@ -37,6 +37,7 @@ target_sources(
 target_include_directories(iota_core PUBLIC "${PROJECT_SOURCE_DIR}/src" "${CMAKE_INSTALL_PREFIX}/include")
 
 add_dependencies(iota_core ext_uthash)
+target_compile_options(iota_core PRIVATE "$<$<CONFIG:DEBUG>:${IOTA_DEBUG_OPTIONS}>")
 
 target_link_libraries(iota_core PUBLIC iota_crypto)
 
