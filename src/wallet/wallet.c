@@ -49,6 +49,11 @@ static int validate_pib44_path(char const path[]) {
 
     // get value
     unsigned long value = strtoul(token, &ptr, 10);
+    if (value >= (1UL << 31)) {
+      // out of range
+      printf("[%s:%d] invalid path range\n", __func__, __LINE__);
+      break;
+    }
 
     // hardened
     if (!(strncmp(ptr, "\'", 1) == 0 || strncmp(ptr, "H", 1) == 0)) {

@@ -36,7 +36,7 @@ char *get_node_features_at(res_node_info_t *info, size_t idx) {
     return NULL;
   }
 
-  int len = utarray_len(info->u.output_node_info->features);
+  size_t len = utarray_len(info->u.output_node_info->features);
   if (idx < 0 || idx >= len) {
     printf("[%s:%d]: get_features failed (invalid index)\n", __func__, __LINE__);
     return NULL;

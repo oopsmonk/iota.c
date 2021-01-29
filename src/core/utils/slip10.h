@@ -23,7 +23,7 @@ typedef struct {
 
 typedef struct {
   uint32_t path[MAX_PIB32_PATH];
-  int len;
+  size_t len;
 } bip32_path_t;
 
 #ifdef __cplusplus

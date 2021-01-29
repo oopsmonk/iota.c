@@ -9,6 +9,7 @@ add_library(iota_wallet STATIC)
 set_target_properties(iota_wallet PROPERTIES C_STANDARD_REQUIRED NO C_STANDARD 99)
 
 add_dependencies(iota_wallet iota_client)
+target_compile_options(iota_wallet PRIVATE "$<$<CONFIG:DEBUG>:${IOTA_DEBUG_OPTIONS}>")
 
 target_sources(iota_wallet PRIVATE "wallet.c" PUBLIC "wallet.h")
 

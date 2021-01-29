@@ -138,7 +138,7 @@ int slip10_key_from_path(byte_t seed[], size_t seed_len, char path[], slip10_cur
 
   master_key_generation(seed, seed_len, curve, key);
 
-  for (int i = 0; i < bip32_path.len; i++) {
+  for (size_t i = 0; i < bip32_path.len; i++) {
     if (curve == ED25519_CURVE && bip32_path.path[i] < BIP32_HARDENED) {
       // ed25519 only supports hardened indices
       return -3;
