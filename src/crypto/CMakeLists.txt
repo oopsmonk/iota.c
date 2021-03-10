@@ -14,9 +14,14 @@ target_sources(
 
 target_include_directories(iota_crypto PUBLIC "${PROJECT_SOURCE_DIR}/src" "${CMAKE_INSTALL_PREFIX}/include")
 
-add_dependencies(iota_crypto sodium)
-
-target_link_libraries(iota_crypto INTERFACE sodium)
+if(BUILD_IN_CRYPTO)
+  add_dependencies(iota_crypto blake2)
+  target_link_libraries(iota_crypto INTERFACE blake2)
+else()
+  target_compile_definitions(iota_crypto PUBLIC CRYPTO_USE_SODIUM)
+  add_dependencies(iota_crypto sodium)
+  target_link_libraries(iota_crypto INTERFACE sodium)
+endif()
 
 if(__JEMALLOC_INCLUDED)
   add_dependencies(iota_crypto jemalloc)
