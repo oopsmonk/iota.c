@@ -15,8 +15,8 @@ target_sources(
 target_include_directories(iota_crypto PUBLIC "${PROJECT_SOURCE_DIR}/src" "${CMAKE_INSTALL_PREFIX}/include")
 
 if(BUILD_IN_CRYPTO)
-  add_dependencies(iota_crypto blake2)
-  target_link_libraries(iota_crypto INTERFACE blake2)
+  add_dependencies(iota_crypto blake2 ed25519_donna)
+  target_link_libraries(iota_crypto INTERFACE blake2 ed25519_donna)
 else()
   target_compile_definitions(iota_crypto PUBLIC CRYPTO_USE_SODIUM)
   add_dependencies(iota_crypto sodium)

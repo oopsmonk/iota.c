@@ -16,8 +16,13 @@ option(IOTA_TESTS "Enable IOTA Client library test cases" ON)
 option(IOTA_ASAN_ENABLED "Enable Address sanitizer" OFF)
 option(ENABLED_JEMALLOC "Enable jemalloc memory allocator" OFF)
 option(IOTA_EXAMPLES "Build example application" ON)
-# TODO default ON for temporary
-option(BUILD_IN_CRYPTO "Use build in crypto in 3rd party libs" ON)
+##### Notice #####
+# BUILD_IN_CRYPTO = ON, only support GCC compiler and Openssl is required.
+# ed25519-donna has a compiling issue with clang 11
+# ed25519-donna-64bit-x86.h:14:3: error: inline assembly requires more registers than available
+#                  "movq %0, %%rax                  ;\n"
+#                  ^
+option(BUILD_IN_CRYPTO "Use build in crypto in 3rd party libs" OFF)
 
 # fetch external libs
 include(ExternalProject)
@@ -67,6 +72,7 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 if(BUILD_IN_CRYPTO)
   add_subdirectory(3rd-party/blake2)
+  add_subdirectory(3rd-party/ed25519-donna)
 endif()
 
 add_subdirectory(src)
